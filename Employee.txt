@@ -4,4 +4,6 @@ public class Employee{
   private int age;
   private String email;
 
+  private String lastUpdatedTimeStamp;
+
 }
