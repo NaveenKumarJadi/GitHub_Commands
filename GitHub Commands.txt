@@ -2,8 +2,9 @@
                             Git & GitHub
 ===========================================================================
 
+++++++++++++++++++++++++++++++++++++++++++++++
 Difference between git and GitHub:
-
+++++++++++++++++++++++++++++++++++++++++++++++
 Git	                                                          GitHub
 Git is a software	                                            GitHub is a service
 Git is a command-line tool	                                  GitHub is a graphical user interface
@@ -22,6 +23,7 @@ Git was first released in 2005	                              GitHub was launched
       o	When modified
       o	What was modified
       o	Why modified
+
 
 Environment Setup
 1.	Create an account at github.com (free of cost).
