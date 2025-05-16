@@ -1,0 +1,239 @@
+===========================================================================
+                            Git & GitHub
+===========================================================================
+
+Difference between git and GitHub:
+
+Git	                                                          GitHub
+Git is a software	                                            GitHub is a service
+Git is a command-line tool	                                  GitHub is a graphical user interface
+Git is installed locally on the system	                      GitHub is hosted on the web
+Git is maintained by Linux	                                  GitHub is maintained by Microsoft
+Git is focused on version control and code sharing.	          GitHub is focused on centralized source code hosting
+Git is a version control system to manage source code history	GitHub is a hosting service for Git repositories.
+Git was first released in 2005	                              GitHub was launched in 2008.
+
+•	Git is a version control software.
+•	GitHub is a platform used to store all developers' project source code in one place.
+•	On GitHub, we can create repositories to store project code.
+•	All developers can connect to the GitHub repository for code integration (making code integration very easy).
+•	GitHub allows tracking of all code changes:
+      o	Who modified
+      o	When modified
+      o	What was modified
+      o	Why modified
+
+Environment Setup
+1.	Create an account at github.com (free of cost).
+2.	Download & install Git client software: https://git-scm.com/downloads
+3.	Open Git Bash and configure your name and email:
+    Configuring name and email is a one-time process.
+
+    git config --global user.name "your-name"
+    git config --global user.email "your-email"
+
+    git config –global user.name “NaveenKumarJadi”
+    git config –global user.email naveenkumarjadi2005@gmail.com
+
+check the user name and email:
+    git config user.name
+    git config user.email
+
+What is a GitHub Repository?
+•	A repository is a place to store project source code/files.
+•	For each project, one GitHub repository is created.
+•	Two types of repositories:
+    i.	Public Repo: Anybody can see & you choose who can commit.
+    ii.	Private Repo: You choose who can see & who can commit.
+
+Example:
+Project Git Repo URL: https://github.com/NaveenKumarJadi/MyFirstFlash.git
+
+…or create a new repository on the command line
+echo "# MyFirstFlash" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin https://github.com/NaveenKumarJadi/MyFirstFlash.git
+  git push -u origin main
+  
+  …or push an existing repository from the command line
+  git remote add origin https://github.com/NaveenKumarJadi/MyFirstFlash.git
+  git branch -M main
+  git push -u origin main
+
+Project team members use the repo URL to connect.
+
+Git Architecture
+  1.	Working Tree
+  2.	Staging Area
+  3.	Local Repository
+  4.	Central Repository (Remote)
+ 
+
+++++++++++++++++++++++++
+Git Bash Commands
+++++++++++++++++++++++++
+      git init         		           # Initialize working tree
+      git status          	   	     # Show working tree status
+      git add <file-name>  	         # Add file to staging area
+      git add .           	     	   # Add all files to staging area
+      git commit -m "msg"         	 # Commit staged files to local repo
+      git push             	   	     # Push local commits to remote repo
+      git restore --staged <file> 	 # Unstage
+      git restore <file>    	 	     # discard changes
+      git log              	    	   # Show commit history
+      git rm <file-name>   	         # Remove a file
+      git clone <repo-url>  	       # Download remote repo to local
+      git pull              	       # Get latest changes from remote repo
+      Git add  -A 			             # adding all files to remote repository
+
+Note: After git rm, commit and push to delete file from remote repo.
+
++++++++++++++++++++++++
+Git GUI
+++++++++++++++++++++++++
+  •	A desktop tool to perform Git operations.
+  •	Run in working tree:
+    $ git gui
+
+
+.gitignore File
+  •	Specifies files/folders to skip in Git operations.
+Example:
+  .settings
+  .classpath
+  .project
+  target/
+
+++++++++++++++++++++++++
+Git Branches
+++++++++++++++++++++++++
+When multiple teams work on the same repo, use branches to avoid delivery issues.
+Recommended Branches:
+    •	main (default)
+    •	develop (development team)
+    •	sit (bug fixing team)
+    •	research (R&D team)
+    •	release (production team)
+Multiple teams can work in parallel using branches.
+
+$ git branch <branch name>	 	        # Create branch
+$ git branch 			                    # List local branch
+$ git branch -a 		                	# Lists local and remote branches.
+$ git checkout <branch-name>	        # switch to branch
+$ git switch <branch-name> 		        # switch to branch
+
+$ git checkout -b <branch-name>       # Create and switch to a new branch (in one command)
+      or
+$ git switch -c <branch-name>         # Create and switch to a new branch locally
+$ git push -u origin <branch-name>	  # Make the local branch available on GitHub (remote)
+$ git push
+
+$ git branch -m <new-name>           	# Rename the current branch
+$ git branch -m <old-name> <new-name> # git branch -m <old-name> <new-name>
+
+$ git branch -d <branch-name>       	#  Delete a branch
+$ git branch -D <branch-name>	        # Forces delete even if not merged.
+
+$ git diff <branch1> <branch2>	      # compare branches
+$ git branch -v 			                # Show last commit on each branch
+
+$ git clone –branch <branchname> <remote-repo-url>    # Clone particular branch:
+
+++++++++++++++++++++++++++++++++++++++++++++
+Git Interview Concepts
+++++++++++++++++++++++++++++++++++++++++++++
+✅ What is a Pull Request?
+    A Pull Request is used to merge changes from one branch into another.
+    Example:
+    Merging changes from the develop branch to the main branch.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ What is Git Stash?
+    Git Stash is used to save the current changes in a backup (stash) and make the working directory clean.
+    Example Scenario:
+    •	JIRA-101 assigned at 9 AM → Work started, partial changes done.
+    •	At 11 AM, JIRA-102 assigned → It's critical.
+    •	To work on JIRA-102, stash the JIRA-101 changes:
+    git stash
+    •	After pushing JIRA-102 changes, get JIRA-101 changes back to working tree :
+    git stash apply
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ How to Remove Git Local Commits?
+    Use the git reset command to undo local commits.
+    Types of Reset:
+    •	Soft Reset: Removes commit but retains changes in the staging area.
+    git reset --soft HEAD~1
+    •	Hard Reset: Removes both commit and file changes.
+    git reset --hard HEAD~1
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ How to Revert Central Repo Commits?
+Use the git revert command to undo changes from the remote repository.
+$  git revert <commit-id>
+$ git push
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ What is Git Cherry-pick?
+•	By default, git merge merges all commits from one branch to another.
+•	If you want to merge only a specific commit, use git cherry-pick.
+$ git cherry-pick <commit-id>
+$ git push
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ Git Pull vs Git Fetch
+  Command	Description
+  git pull	Downloads changes from the remote repo and merges into working directory
+  git fetch	Downloads changes to the local repo only
+  To merge after fetch, run:
+  git merge
+  git pull = git fetch + git merge
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+✅ What is Git Fork?
+Git Fork is used to copy someone else's GitHub repository into your own GitHub account.
+•	Useful for contributing to open-source projects.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Trouble Shooting:
+If you trying to push the project into Git if it asks the username and password even though your gave proper credentials it can’t allow so you go to below steps:
+Git > settings > developer settings > personal access tokens >
+create a new tokens (name: ***, 90 days, select all features) > 
+copy the token code and use the token code as password and username is same as previous username.
+Right click on project > team > share project > repository >
+
+Right click on project > team > commit > ..
+
+Download the git:
+Signup the GitHub:
+
+How to delete the repository (at bottom the option is appeared)
+
+Trouble Shooting: 
+If in case your laptop/Machine having multiple git users we have to remove the remaining accounts for that go to credential manager in your system and go to git and remove those accounts.
+
+How to add an Existing project from Explorer to GitHub
+>> copy the project path and change the backslash into forwardslash
+
+F:\Servlet & JSP\Anonymous-Inne-rClass
+
+F:/Servlet & JSP/Anonymous-Inne-rClass
+
+>> open gitBash 
+cd F:/Servlet & JSP/Anonymous-Inne-rClass
+
+>> go to that path, then
+git init (it will create .git folder in that path)
+
+>> copy the url of gitHub (https://github.com/NaveenKumarJadi/Java.git)
+
+git remote add origin https://github.com/NaveenKumarJadi/Java.git
+
+>> for checking (the name is origin)
+git remote
+
+>> pushing to remote repository
+git push -u origin master
